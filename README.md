@@ -190,6 +190,20 @@ y este Kernel si tiene:
 
 ahora retrocedo con Esc dos veces hasta llegar al inicio.
 
+### Desactivando la virtualización 
+
+Me pongo encima de:
+
+**Virtualization**
+
+![](vx_images/20240124-133650-kernel-virtualization-enabled-by-default.png)
+
+y aplasto la barra espaiadora para desactibarlo:
+
+![](vx_images/20240124-133827-desabling-Virtualization.png)
+
+Bien
+
 y dar Enter, y cuando dice Ok dar Enter otra vez
 
 ![](vx_images/191212 dar enter en ok.png)
