@@ -18,7 +18,7 @@ Esta parte es totalmente opcional, no es necesario para compilar el Kernel, pero
 
 .bashrc
 
-![](vx_images/20240123-224737 abrir con clic derecho.png)
+![](vx_images/20240123-224737-abrir-con-clic-derecho.png)
 
 en la siguiente imagen está abierto con Gedit:
 
