@@ -154,15 +154,31 @@ y poner allí en la terminal:
 
 ![](vx_images/20240124-123559-abrir-terminal-alli-en-el-kernel.png)
 
-y al dar ENTER aparecerá:
+y al dar ENTER aparecerá la configuración del Kernel:
 
-![](vx_images/185049 menuconfig abierto.png)
+![](vx_images/20240124-123841-kernel-configuration.png)
 
 ## VERIFICANDO SOPORTE EXFAT (OPCIONAL)
 
-Yo utilizo particiones exFAT y si este Kernel no tiene soporte no me sirve, para verificar si tiene entro en:
+Yo utilizo particiones exFAT y si este Kernel no tiene soporte tendría que instalarselo, para verificar si tiene entro en la carpeta:
 
-File Systems ---> DOS/FAT/exFAT 
+fs
+
+la cual es la abreviación de File System
+
+![](vx_images/20240124-131200-fs-file-system-folder.png)
+
+allí dentro en este kernel está la carpeta:
+
+exfat
+
+![](vx_images/20240124-131429-exfat-folder.png)
+
+también en el menú de las configuraciones del Kernel se puede revisar en:
+
+**File Systems ---> DOS/FAT/exFAT** 
+
+ 
 
 y este Kernel si tiene
 
@@ -277,21 +293,25 @@ salir
 
 
 
-**BASADO EN:**
+**BASADO EN:**  
 
-**Building realtime Linux for ROS 2 [community-contributed] — ROS 2 Documentation: Foxy documentation**
+**Building realtime Linux for ROS 2 [community-contributed] — ROS 2 Documentation: Foxy documentation**  
 [https://docs.ros.org/en/foxy/Tutorials/Building-Realtime-rt_preempt-kernel-for-ROS-2.html](https://docs.ros.org/en/foxy/Tutorials/Building-Realtime-rt_preempt-kernel-for-ROS-2.html)
 
-**System configuration [Linux-Sound]**
+**System configuration [Linux-Sound] ** 
 [https://wiki.linuxaudio.org/wiki/system_configuration#do_i_really_need_a_real-time_kernel](https://wiki.linuxaudio.org/wiki/system_configuration#do_i_really_need_a_real-time_kernel)
 
-**Real-Time Linux | Toradex Developer Center**
+**Real-Time Linux | Toradex Developer Center ** 
 [https://developer.toradex.com/linux-bsp/real-time/real-time-linux/#preempt-rt-patch-set](https://developer.toradex.com/linux-bsp/real-time/real-time-linux/#preempt-rt-patch-set)
 
-**Guide for Debian Maintainers**
+**Guide for Debian Maintainers**  
 [https://www.debian.org/doc/manuals/debmake-doc/index.en.html](https://draft.blogger.com/#)
-**Chapter 3. Tool Setups**
+**Chapter 3. Tool Setups**  
 [https://www.debian.org/doc/manuals/debmake-doc/ch03.en.html#email-setup](https://draft.blogger.com/#)
+
+**The Linux Kernel: The Source Code**  
+
+https://www.linux.org/threads/the-linux-kernel-the-source-code.8679/
 
 
 
