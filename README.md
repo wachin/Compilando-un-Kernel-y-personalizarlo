@@ -2,7 +2,7 @@
 
 ### Añadir el nombre del Mantenedor o Responsable a su Sistema para que se compile con ese nombre (Opcional)
 
-Esto es totalmente opcional, no es necesario para compilar el Kernel, pero si lo hace una vez instalado el  Kernel al revisarlo en Synaptic se verá allí su nombre y su correo
+Esta parte es totalmente opcional, no es necesario para compilar el Kernel, pero si lo hace una vez instalado el  Kernel al revisarlo en Synaptic se verá allí su nombre y su correo
 
 Para hacer esto ponga en una terminal lo siguiente (teniendo instalado Gedit):
 
@@ -10,7 +10,9 @@ Para hacer esto ponga en una terminal lo siguiente (teniendo instalado Gedit):
 gedit ~/.bashrc 
 ```
 
-allí debe llegar hasta abajo y con enter hacerse un espacio::
+Nota: O puede usar otro editor de texto, incluso puede abrirlo con clic derecho viendo en su administrador de archivos los archivos ocultos con Ctrl +H
+
+En el archivo .bashrc debe llegar hasta abajo y con Enter hacerse un espacio:
 
 
 
@@ -22,11 +24,13 @@ DEBEMAIL="your.email.address@example.org"
 DEBFULLNAME="Firstname Lastname"
 export DEBEMAIL DEBFULLNAME
 
-y cambiar con sus datos, a mi me queda así: 
+y cambiar con sus datos.  
+
+A mi me queda así: 
 
 [![img](https://blogger.googleusercontent.com/img/a/AVvXsEiYcoO48RbNiVNv75ejUow3IkQhbUAWP5k0exROfZ1UlYHZCD0_yocp5HigNJcWrZnWLf_etsKS2MLlck7stoAjzAMi7nl127bL0Q-wgFS3E_y5-a_RPMeRNgdQ_LWzvRlZXtRMAuls_U1GXG8k21OcwMjMG7Ggfcea7QhszAre6qnFUmqfX7UZf96f=s16000)](https://draft.blogger.com/#)
 
-ahora  cierro Gedit y reinicio el ordenador. 
+ahora guardo y cierro el editor de texto y cierro sesión y vuelo a entrar en el ordenador. 
 
 # ¿Qué versión de Kernel está instalado en mi Sistema Operativo?
 
