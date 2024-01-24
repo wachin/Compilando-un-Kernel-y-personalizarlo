@@ -139,7 +139,7 @@ Primero les aconsejo que hagan la descarga en alguna carpeta para este proposito
 
 y extraer el contendio del Kernel
 
-![](vx_images/20240124-080215 extrayendo el kernel.png)
+![](vx_images/20240124-080215-extrayendo-el-kernel.png)
 
 # Configurando el Kernel
 Aoner allí mismo en la terminal:
