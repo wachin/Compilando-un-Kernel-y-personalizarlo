@@ -1,5 +1,11 @@
 # Compilando un Kernel y personalizarlo en Linux
 
+**TUTORIAL EN CONSTRUCCIÓN**
+
+
+
+
+
 ### Porqué compilar un Kernel para personalizarlo?
 
 Deseo compilar un Kernel y personalizarlo porque tengo un ordenador de pocos recursos y voy a compilar el Kernel desabilitando la Virtualización y otros para alijerar el Kernel
@@ -84,12 +90,16 @@ en adelante, porque esa está con la feha 2020.
 
 # Buscar el código fuente correcto
 
+La preguna importante es con qué criterio debo buscar el código fuente del Kernel? Debemos tener muy en cuenta la fecha en que compramos nuestro ordenador y de acuerdo a eso buscar el codigo fuente del Kernel
+
+En mi caso el ordenador es del 2009 y debo usar la versión mas antigua del Kernel pero que se pueda instalar en el Linux que estoy usando y que esté actualizado
+
 Me dirijo a:
 
 **Linux Kernel**  
 [https://mirrors.edge.kernel.org/pub/linux/kernel/](https://mirrors.edge.kernel.org/pub/linux/kernel/)
 
-allí dentro busco:
+allí dentro busco el:
 
 v5.x
 
@@ -99,41 +109,33 @@ y allí encuentro:
 
 [https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/](https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/)
 
+y allí dentro busco un código fuente con el nombre:
 
-y allí dentro encuentro el código fuente:
+Linux 5.10. . 
 
-linux-5.10.109.tar.xz                              28-Mar-2022 08:03    115M
+y elijo el siguiente:
 
-[https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-5.10.109.tar.xz](https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-5.10.109.tar.xz)
+![](img/20240123-234310 linux-5.10.208.tar.xz.png)
 
-**Nota:** Con el paso del tiempo este archivo ya no estará disponible porque lo actualizan en los Kernel LTS (cuando encuentran una vulnerabilidad la corrigen)
+con la fecha actual que en este caso es 2024 y .tar.xz porque ocupa menos espacio:
 
-# Resumen de Descarga
+linux-5.10.208.tar.xz                              15-Jan-2024 17:53    115M
 
-Haré un resumen de los enlaces para poner en la terminal y descargar. Le aconsejo que esto lo haga dentro de alguna carpeta:
+y el siguiente es el enlace que lo copio de allí:
 
-**Parche RT**
+https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-5.10.208.tar.xz
 
-    wget -c https://mirrors.edge.kernel.org/pub/linux/kernel/projects/rt/5.10/patch-5.10.109-rt65.patch.xz
+**Nota:** Con el paso del tiempo es posible que este archivo ya no esté disponible porque lo actualizán en los Kernel LTS (cuando encuentran una vulnerabilidad la corrigen)
+
+# Descargandolo con wget
+
+Lo pueden descargar así:
 
 **Kernel**
 
-    wget -c https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-5.10.109.tar.xz
+    wget -c https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-5.10.208.tar.xz
 
-# Aplicación del Parche RT
 
-Ubíquese en una terminal en el lugar donde está el parche y el código fuente:
-
-patch-5.10.109-rt65.patch.xz
-linux-5.10.109.tar.xz
-
-y ponga:
-
-```tar xJvf linux-5.10.109.tar.xz
-tar xJvf linux-5.10.109.tar.xz
-cd linux-5.10.109
-xzcat ../patch-5.10.109-rt65.patch.xz | patch -p1
-```
 
 # Usando el archivo de configuración de AV Linux
 Allí mismo ponga en la terminal:
