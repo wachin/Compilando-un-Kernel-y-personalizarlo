@@ -18,11 +18,11 @@ Esta parte es totalmente opcional, no es necesario para compilar el Kernel, pero
 
 .bashrc
 
-![](img/20240123-224737 abrir con clic derecho.png)
+![](vx_images/20240123-224737 abrir con clic derecho.png)
 
 en la siguiente imagen está abierto con Gedit:
 
-![](img/20240123-225030 bashrc abierto.png)
+![](vx_images/20240123-225030 bashrc abierto.png)
 
  y allí debe de poner lo siguiente:
 
@@ -34,7 +34,7 @@ y cambiar con sus datos.
 
 A mi me queda así: 
 
-![](img/20240123-225119 añadiendo los datos de usuario a bashrc.png)
+![](vx_images/20240123-225119 añadiendo los datos de usuario a bashrc.png)
 
 ahora guardo y cierro el editor de texto y cierro sesión y vuelo a entrar en el ordenador. 
 
@@ -67,7 +67,7 @@ Ahora es necesario ver cual Kernel se podría instalar, y es necesario saber que
 
 La siguiente captura de pantalla la hago con la fecha Enero 2024
 
-![](img/20240123-230411 Kernel Releases 2024 Enero.png)
+![](vx_images/20240123-230411 Kernel Releases 2024 Enero.png)
 
 **Nota**: Si no sepan Inglés les aconsejo que la traduzcan en [Google Traductor](https://translate.google.com/)
 
@@ -103,7 +103,11 @@ allí dentro busco el:
 
 v5.x
 
-![](img/20240123-231125 buscando el kernel 5.x.png)
+![](vx_images/20240123-231125 buscando el kernel 5.x.png)
+
+
+
+**Nota:** También luego intentaré con el v4.x porque tal vez pueda funcionar.
 
 y allí encuentro:
 
@@ -115,7 +119,7 @@ Linux 5.10. .
 
 y elijo el siguiente:
 
-![](img/20240123-234310 linux-5.10.208.tar.xz.png)
+![](vx_images/20240123-234310 linux-5.10.208.tar.xz.png)
 
 con la fecha actual que en este caso es 2024 y .tar.xz porque ocupa menos espacio:
 
@@ -129,77 +133,26 @@ https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-5.10.208.tar.xz
 
 # Descargandolo con wget
 
-Lo pueden descargar así:
+Primero les aconsejo que hagan la descarga en alguna carpeta para este proposito en algún lugar y allí abran una terminal y pongan ejemplo par mi caso es:
 
 **Kernel**
 
     wget -c https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-5.10.208.tar.xz
 
+y extraer el contendio del Kernel
 
 
-# Usando el archivo de configuración de AV Linux
-Allí mismo ponga en la terminal:
-```
-wget https://github.com/wachin/AV-Linux-archivos-importantes/raw/master/AVL-MXE-2021.05.22-xfce4-openbox-i386.iso/usr/src/linux-headers-5.9.1-rt19avl1/.config
-```
-con esto colocamos allí el archivo oculto (para verlo aplaste Ctrl + H):
 
-.config
-
-que como hemos parchado el Kernel a RT habilita las siguientes configuraciones para convertirlo en un Kernel Real Time:
-
-```
-# Enabled CCONFIG_NO_HZ_IDLE
- -> General setup
-  -> Timers subsystem
-   -> Timer tick handling (Full dynticks system (tickless))
-    (X) Idle dynticks system (tickless idle)
-
-# Enabled CONFIG_HIGH_RES_TIMERS
- -> General setup
-  -> Timers subsystem
-   [*] High Resolution Timer Support
-
-# Enabled CONFIG_PREEMPT_RT
- -> Processor type and features
-  -> Preemption Model (Fully Preemptible Kernel (Real-Time))
-   (X) Fully Preemptible Kernel (Real-Time)
-
-# Enabled CONFIG_HZ_1000 
- -> Processor type and features
-  -> Timer frequency (1000 HZ)
-   (X) 1000 HZ
-
-# Enabled CPU_FREQ_DEFAULT_GOV_PERFORMANCE
- ->  Power management and ACPI options
-  -> CPU Frequency scaling
-    -> Default CPUFreq governor
-     (X) performance
-```
-
-Sobre estas configuraciones información:
-
-| Configuración en .config                                     | Descripción                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [CONFIG_NO_HZ_IDLE](https://cateee.net/lkddb/web-lkddb/NO_HZ_IDLE.html) | Esta opción habilita un sistema inactivo sin señales: las interrupciones del temporizador solo se activarán según sea necesario cuando el sistema esté inactivo. Esto suele ser interesante para el ahorro de energía. |
-| [CONFIG_HIGH_RES_TIMERS](https://cateee.net/lkddb/web-lkddb/HIGH_RES_TIMERS.html) | Esta opción habilita la compatibilidad con el temporizador de alta resolución. Si su hardware no es compatible, esta opción solo aumenta el tamaño de la imagen del kernel. |
-| [CONFIG_PREEMPT_RT](https://rt.wiki.kernel.org/index.php/CONFIG_PREEMPT_RT_Patch) | El conjunto de parches [CONFIG_PREEMPT_RT](http://www.kernel.org/pub/linux/kernel/projects/rt/) lo mantiene un pequeño grupo de desarrolladores principales encabezado por Ingo Molnar. Este parche permite adelantarse a casi todo el kernel, con la excepción de unas pocas regiones de código muy pequeñas ("regiones críticas raw_spinlock"). Esto se hace reemplazando la mayoría de los spinlocks del kernel con mutexes que admiten la [herencia de prioridad](https://rt.wiki.kernel.org/index.php/Priority_inheritance), así como también moviendo todas las interrupciones y las interrupciones de software a los subprocesos del kernel.<br/><br/>Puede encontrar un [RT_PREEMPT_HOWTO](https://rt.wiki.kernel.org/index.php/RT_PREEMPT_HOWTO) detallado en esta página.<br/><br/>Paul McKenney ha escrito una buena [descripción general de CONFIG_PREEMPT_RT](http://lwn.net/Articles/146861/) que es una buena introducción a los cambios introducidos en el kernel por el parche CONFIG_PREEMPT_RT.<br/><br/>[Aquí](http://osadl.org/RT) se encuentra disponible una descripción general de los diversos componentes del parche CONFIG_PREEMPT_RT y su estado de fusión en el núcleo de la línea principal. |
-| [CONFIG_HZ_1000](https://cateee.net/lkddb/web-lkddb/HZ_1000.html) | 1000 Hz es la opción preferida para sistemas de escritorio y otros sistemas que requieren respuestas interactivas rápidas a eventos. |
-| [CPU_FREQ_DEFAULT_GOV_PERFORMANCE](https://www.linuxtopia.org/online_books/linux_kernel/kernel_configuration/re168.html) | Esto establece la frecuencia de forma estática a la frecuencia más alta admitida por la CPU |
-
-Ese archivo .config el cual tiene las configuraciones del Kernel de AV Linux del 2021 lo extraje de la ISO del mismo y lo subí a GitHub:
-
-[https://github.com/wachin/AV-Linux-archivos-importantes/tree/master/AVL-MXE-2021.05.22-xfce4-openbox-i386.iso/usr/src/linux-headers-5.9.1-rt19avl1](https://github.com/wachin/AV-Linux-archivos-importantes/tree/master/AVL-MXE-2021.05.22-xfce4-openbox-i386.iso/usr/src/linux-headers-5.9.1-rt19avl1)
-
-Ahora poner allí mismo en la terminal:
+# Configurando el Kernel
+Aoner allí mismo en la terminal:
 
 `make menuconfig`
 
-![](img/185048 make menuconfig.png)
+![](vx_images/185048 make menuconfig.png)
 
 y al ejecutar:
 
-![](img/185049 menuconfig abierto.png)
+![](vx_images/185049 menuconfig abierto.png)
 
 ## VERIFICANDO SOPORTE EXFAT (OPCIONAL)
 
@@ -219,19 +172,19 @@ Presionaremos la tecla Tab o con la  flecha derecha para ubicarnos en el menú:
 
 Load
 
-![](img/191103 llegar hasta load.png)
+![](vx_images/191103 llegar hasta load.png)
 
 y dar Enter, y cuando dice Ok dar Enter otra vez
 
-![](img/191212 dar enter en ok.png)
+![](vx_images/191212 dar enter en ok.png)
 
 Ahora con Tab o flecha derecha llegar hasta Exit y dar Enter:
 
-![](img/191320 llegar hasta exit y dar enter.png)
+![](vx_images/191320 llegar hasta exit y dar enter.png)
 
 y enter en la nueva configuración:
 
-![](img/191430 enter en la nueva configuracion.png)
+![](vx_images/191430 enter en la nueva configuracion.png)
 
 
 
@@ -271,7 +224,7 @@ si se pone eso en la terminal con esa etiqueta será compilado el Kernel y eso a
 
 ahora pongo una imagen de lo que sale al poner el comando:
 
-[![img](https://blogger.googleusercontent.com/img/a/AVvXsEhkv1-n-y3iXMzV7Lit9H4qcHStDQGqL_ytfSOcIJ3fhuLiRSjKj18C7VRPRi5gqKRz1nH4zP6kZAN6PlI-g1fC6U9RYZjbER9wbQ0blHDGlXDvtpTLyK4fj4dMkZuBtEvQj4gbS4O5sYnVvsEX8RcYXcfXfuj5VTJvwtU2uwb9oljyCjFsm2pH1XbU=s16000)](https://draft.blogger.com/#)
+[![vx_images](https://blogger.googleusercontent.com/vx_images/a/AVvXsEhkv1-n-y3iXMzV7Lit9H4qcHStDQGqL_ytfSOcIJ3fhuLiRSjKj18C7VRPRi5gqKRz1nH4zP6kZAN6PlI-g1fC6U9RYZjbER9wbQ0blHDGlXDvtpTLyK4fj4dMkZuBtEvQj4gbS4O5sYnVvsEX8RcYXcfXfuj5VTJvwtU2uwb9oljyCjFsm2pH1XbU=s16000)](https://draft.blogger.com/#)
 
 hay que esperar un buen rato hasta que termine la compilación, pueden ser horas
 
@@ -279,7 +232,7 @@ hay que esperar un buen rato hasta que termine la compilación, pueden ser horas
 
 Bueno, ya se compiló, quizá se demoró unas 5 horas en compilar (depende del ordenador), ahora pongo una imágen de cómo me quedó
 
-![](img/191531 Estos dos deb son el Kernel RT.png)
+![](vx_images/191531 Estos dos deb son el Kernel RT.png)
 
 los dos deb:
 
@@ -304,7 +257,7 @@ kernel header
 
 y verá su nombre, su correo, y la etiqueta:
 
-![](img/191532 Kernel con la etiqueta wachin.png)
+![](vx_images/191532 Kernel con la etiqueta wachin.png)
 
 
 
