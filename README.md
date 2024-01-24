@@ -188,15 +188,7 @@ y este Kernel si tiene:
 
 ![](vx_images/20240124-132028-exFAT-file-system-support.png)
 
-## No hacer ningún cambio en la configuración del Kernel 
-
-No es necesario hacer ningún cambio pues ese archivo .config ya tiene las configuraciones para el Kernel RT de [AV Linux](http://www.bandshed.net/) 2021
-
-Presionaremos la tecla Tab o con la  flecha derecha para ubicarnos en el menú:
-
-Load
-
-![](vx_images/191103 llegar hasta load.png)
+ahora retrocedo con Esc dos veces hasta llegar al inicio.
 
 y dar Enter, y cuando dice Ok dar Enter otra vez
 
