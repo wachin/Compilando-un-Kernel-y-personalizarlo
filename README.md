@@ -178,11 +178,15 @@ también en el menú de las configuraciones del Kernel se puede revisar en:
 
 **File Systems ---> DOS/FAT/exFAT** 
 
- 
+![](vx_images/20240124-131634-File-Systems-in-kernel-menu.png) 
 
-y este Kernel si tiene
+y doy ENTER y con la flecha hacia abajo busco:
 
+![](vx_images/20240124-131845-File-Systems--DOS-FAT-exFAT.png)
 
+y este Kernel si tiene:
+
+![](vx_images/20240124-132028-exFAT-file-system-support.png)
 
 ## No hacer ningún cambio en la configuración del Kernel 
 
