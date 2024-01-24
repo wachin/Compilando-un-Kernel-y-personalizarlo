@@ -26,9 +26,9 @@ en la siguiente imagen está abierto con Gedit:
 
  y allí debe de poner lo siguiente:
 
-DEBEMAIL="your.email.address@example.org"
-DEBFULLNAME="Firstname Lastname"
-export DEBEMAIL DEBFULLNAME
+DEBEMAIL="your.email.address@example.org"  
+DEBFULLNAME="Firstname Lastname"  
+export DEBEMAIL DEBFULLNAME  
 
 y cambiar con sus datos.  
 
@@ -54,7 +54,9 @@ entonces sé que si instalo una versión como esa debería de funcionar, o sea e
 
 Debemos instalar las siguientes dependencias para poder compilarlo:
 
-```sudo apt-get install libncurses5-dev fakeroot wget xz-utils flex bison libssl-dev```
+```
+sudo apt-get install libncurses5-dev fakeroot wget xz-utils flex bison libssl-dev
+```
 
 **Nota:** Es posible que con el paso del tiempo se necesite alguna otra dependencia lo cual deberán de consultando con la información de error que les dé mientras lo compilan.
 
@@ -142,13 +144,17 @@ y extraer el contendio del Kernel
 ![](vx_images/20240124-080215-extrayendo-el-kernel.png)
 
 # Configurando el Kernel
-Aoner allí mismo en la terminal:
+Entrar en la carpeta del Kernel y abrir una terminal allí:
+
+![](vx_images/20240124-123352-abrir-terminal-dentro-del-codigo-fuente-del-kernel.png)
+
+y poner allí en la terminal:
 
 `make menuconfig`
 
-![](vx_images/185048 make menuconfig.png)
+![](vx_images/20240124-123559-abrir-terminal-alli-en-el-kernel.png)
 
-y al ejecutar:
+y al dar ENTER aparecerá:
 
 ![](vx_images/185049 menuconfig abierto.png)
 
