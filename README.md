@@ -1,22 +1,22 @@
-# Creando Kernel de Tiempo Real (Real Time) para MX Linux 21
+# Compilando un Kernel y personalizarlo en Linux
+
+### Porqué compilar un Kernel para personalizarlo?
+
+Deseo compilar un Kernel y personalizarlo porque tengo un ordenador de pocos recursos y voy a compilar el Kernel desabilitando la Virtualización y otros para alijerar el Kernel
+
+Este tutorial lo estoy haciendo en MX Linux 21, pero lo puede usar en cualquier Linux basado en Debian, y podría adaptarlo para Ubuntu u otro Linux.
 
 ### Añadir el nombre del Mantenedor o Responsable a su Sistema para que se compile con ese nombre (Opcional)
 
-Esta parte es totalmente opcional, no es necesario para compilar el Kernel, pero si lo hace una vez instalado el  Kernel al revisarlo en Synaptic se verá allí su nombre y su correo
+Esta parte es totalmente opcional, no es necesario para compilar el Kernel, pero si lo hace una vez instalado el Kernel al revisarlo en Synaptic se verá allí su nombre y su correo, para hacerlo lo más fácil es hacer visibles a los archivos ocultos con Ctrl + H y darle clic derecho y abrir con algún editor de texto al archivo oculto:
 
-Para hacer esto ponga en una terminal lo siguiente (teniendo instalado Gedit):
+.bashrc
 
-```
-gedit ~/.bashrc 
-```
+![](img/20240123-224737 abrir con clic derecho.png)
 
-Nota: O puede usar otro editor de texto, incluso puede abrirlo con clic derecho viendo en su administrador de archivos los archivos ocultos con Ctrl +H
+en la siguiente imagen está abierto con Gedit:
 
-En el archivo .bashrc debe llegar hasta abajo y con Enter hacerse un espacio:
-
-
-
-[![img](https://blogger.googleusercontent.com/img/a/AVvXsEjyxEkHtC6FSeAlqfV2KXKI7Ni5nBvtiejsMpYKzDSMmrI4Y5aOlBpg3ugbrYZiRClOyQ_H7JMG8v0BhLnRReShE41vqAkGfZrwUzK2LInVfrqNKeLAFacBXzUh1HThfoel9-sWfNimBDGH5Z3SMQ78okzwNrpiFSf9wasoIX9L1kpWKWpLzidERUeU=s16000)](https://draft.blogger.com/#)
+![](img/20240123-225030 bashrc abierto.png)
 
  y allí debe de poner lo siguiente:
 
@@ -28,27 +28,29 @@ y cambiar con sus datos.
 
 A mi me queda así: 
 
-[![img](https://blogger.googleusercontent.com/img/a/AVvXsEiYcoO48RbNiVNv75ejUow3IkQhbUAWP5k0exROfZ1UlYHZCD0_yocp5HigNJcWrZnWLf_etsKS2MLlck7stoAjzAMi7nl127bL0Q-wgFS3E_y5-a_RPMeRNgdQ_LWzvRlZXtRMAuls_U1GXG8k21OcwMjMG7Ggfcea7QhszAre6qnFUmqfX7UZf96f=s16000)](https://draft.blogger.com/#)
+![](img/20240123-225119 añadiendo los datos de usuario a bashrc.png)
 
 ahora guardo y cierro el editor de texto y cierro sesión y vuelo a entrar en el ordenador. 
 
 # ¿Qué versión de Kernel está instalado en mi Sistema Operativo?
 
-Primero debe saber qué kernel trae su distrubución, pongo en la terminal:
+Primero debe saber qué kernel trae su distrubución para tener una idea de qué Kernel debe compilar, pongo en la terminal:
 
 `uname -r` 
 
 y me da:
 
-5.10.0-13-686-pae
+5.10.0-20-amd64
 
-entonces se que si instalo una versión como esa debería de funcionar, o sea esto es para tener una idea
+entonces sé que si instalo una versión como esa debería de funcionar, o sea esto es para tener una idea
 
 # Instalar dependencias
 
 Debemos instalar las siguientes dependencias para poder compilarlo:
 
 ```sudo apt-get install libncurses5-dev fakeroot wget xz-utils flex bison libssl-dev```
+
+**Nota:** Es posible que con el paso del tiempo se necesite alguna otra dependencia lo cual deberán de consultando con la información de error que les dé mientras lo compilan.
 
 # Elegir la versión del código fuente del Kernel a Compilar
 
@@ -57,51 +59,30 @@ Ahora es necesario ver cual Kernel se podría instalar, y es necesario saber que
 **Longterm release kernels**
 [https://www.kernel.org/category/releases.html](https://www.kernel.org/category/releases.html)
 
-**Nota**: Si sepan Inglés les aconsejo que lean, esa entrada, o que la traduzcan en [Google Traductor](https://translate.google.com/)
+La siguiente captura de pantalla la hago con la fecha Enero 2024
 
-Allí encuentro y copio la siguiente información en esta fecha 2022-06-15:
+![](img/20240123-230411 Kernel Releases 2024 Enero.png)
+
+**Nota**: Si no sepan Inglés les aconsejo que la traduzcan en [Google Traductor](https://translate.google.com/)
+
+Allí encuentro y copio la siguiente información:
 
 ```
-Version Maintainer 	                        Released 	Projected EOL
-5.15 	Greg Kroah-Hartman & Sasha Levin 	2021-10-31 	Oct, 2023
+Version 	Maintainer 	Released 	Projected EOL
+6.6 	Greg Kroah-Hartman & Sasha Levin 	2023-10-29 	Dec, 2026
+6.1 	Greg Kroah-Hartman & Sasha Levin 	2022-12-11 	Dec, 2026
+5.15 	Greg Kroah-Hartman & Sasha Levin 	2021-10-31 	Dec, 2026
 5.10 	Greg Kroah-Hartman & Sasha Levin 	2020-12-13 	Dec, 2026
 5.4 	Greg Kroah-Hartman & Sasha Levin 	2019-11-24 	Dec, 2025
 4.19 	Greg Kroah-Hartman & Sasha Levin 	2018-10-22 	Dec, 2024
-4.14 	Greg Kroah-Hartman & Sasha Levin 	2017-11-12 	Jan, 2024
-4.9 	Greg Kroah-Hartman & Sasha Levin 	2016-12-11 	Jan, 2023
 ```
 
 entonces lo más seguro es que funcione una versión:
 
 5.10
-5.15
+en adelante, porque esa está con la feha 2020.
 
-# Versión de Kernel elegida para buscar el Parche Real Time correcto
-
-Voy a usar una versión del Kernel:
-
-5.10
-
-entonces con esto en mente debo buscar un parche Real Time para esta versión, para esto me dirijo a:
-
-**Proyectos Real Time**  
-[https://mirrors.edge.kernel.org/pub/linux/kernel/projects/rt](https://mirrors.edge.kernel.org/pub/linux/kernel/projects/rt)
-
-allí entre toda la lista busco el número 
-
-5.10
-
-y allí dentro busco un patch para la versión 5.10 y a esta fecha que hago este tutorial encuentro el más actual que es:
-
-patch-5.10.109-rt65.patch.xz                       07-Apr-2022 03:09    171K
-
-y me descargo ese. Aquí pongo el enlace completo:
-
-[https://mirrors.edge.kernel.org/pub/linux/kernel/projects/rt/5.10/patch-5.10.109-rt65.patch.xz](https://mirrors.edge.kernel.org/pub/linux/kernel/projects/rt/5.10/patch-5.10.109-rt65.patch.xz)
-
-pero les explico que luego es muy posible que este enlace ya no esté disponible porque ellos generalmente andan haciendo actualizaciones (en los Kernel que están en continuo mantenimiento LTS)
-
-# Buscar el código fuente correcto para el mismo parque RT
+# Buscar el código fuente correcto
 
 Me dirijo a:
 
@@ -112,12 +93,14 @@ allí dentro busco:
 
 v5.x
 
+![](img/20240123-231125 buscando el kernel 5.x.png)
+
 y allí encuentro:
 
 [https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/](https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/)
 
 
-y allí dentro encuentro el código fuente que encaja con el parque:
+y allí dentro encuentro el código fuente:
 
 linux-5.10.109.tar.xz                              28-Mar-2022 08:03    115M
 
