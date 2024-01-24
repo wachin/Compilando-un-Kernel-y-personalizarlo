@@ -22,7 +22,7 @@ Esta parte es totalmente opcional, no es necesario para compilar el Kernel, pero
 
 en la siguiente imagen está abierto con Gedit:
 
-![](vx_images/20240123-225030 bashrc abierto.png)
+![](vx_images/20240123-225030-bashrc-abierto.png)
 
  y allí debe de poner lo siguiente:
 
@@ -34,7 +34,7 @@ y cambiar con sus datos.
 
 A mi me queda así: 
 
-![](vx_images/20240123-225119 añadiendo los datos de usuario a bashrc.png)
+![](vx_images/20240123-225119-añadiendo-los-datos-de-usuario-a-bashrc.png)
 
 ahora guardo y cierro el editor de texto y cierro sesión y vuelo a entrar en el ordenador. 
 
@@ -67,7 +67,7 @@ Ahora es necesario ver cual Kernel se podría instalar, y es necesario saber que
 
 La siguiente captura de pantalla la hago con la fecha Enero 2024
 
-![](vx_images/20240123-230411 Kernel Releases 2024 Enero.png)
+![](vx_images/20240123-230411-Kernel-Releases-2024-Enero.png)
 
 **Nota**: Si no sepan Inglés les aconsejo que la traduzcan en [Google Traductor](https://translate.google.com/)
 
@@ -103,9 +103,7 @@ allí dentro busco el:
 
 v5.x
 
-![](vx_images/20240123-231125 buscando el kernel 5.x.png)
-
-
+![](vx_images/20240123-231125-buscando-el-kernel-5.x.png)
 
 **Nota:** También luego intentaré con el v4.x porque tal vez pueda funcionar.
 
@@ -119,7 +117,7 @@ Linux 5.10. .
 
 y elijo el siguiente:
 
-![](vx_images/20240123-234310 linux-5.10.208.tar.xz.png)
+![](vx_images/20240123-234310-linux-5.10.208.tar.xz.png)
 
 con la fecha actual que en este caso es 2024 y .tar.xz porque ocupa menos espacio:
 
@@ -141,7 +139,7 @@ Primero les aconsejo que hagan la descarga en alguna carpeta para este proposito
 
 y extraer el contendio del Kernel
 
-
+![](vx_images/20240124-080215 extrayendo el kernel.png)
 
 # Configurando el Kernel
 Aoner allí mismo en la terminal:
