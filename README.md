@@ -55,7 +55,7 @@ entonces sé que si instalo una versión como esa debería de funcionar, o sea e
 Debemos instalar las siguientes dependencias para poder compilarlo:
 
 ```
-sudo apt-get install libncurses5-dev fakeroot wget xz-utils flex bison libssl-dev
+sudo apt-get install gcc libncurses5-dev fakeroot wget xz-utils flex bison libssl-dev autoconf automake
 ```
 
 **Nota:** Es posible que con el paso del tiempo se necesite alguna otra dependencia lo cual deberán de consultando con la información de error que les dé mientras lo compilan.
