@@ -342,11 +342,43 @@ y de Enter:
 
 ![](vx_images/20240124-223827-en-.config-de-enter-otra-vez.png)
 
-y dice que la configuración ha sido guardada a .config:
+allí dice que la configuración ha sido guardada a .config:
 
 ![](vx_images/20240124-223929-dice-que-la-configuracion-ha-sido-guardada-a-.config.png)
 
-El archivo **.config**
+### Evitando posible error de compilación que no se encuentra "debian/certs/debian-uefi-certs.pem"
+
+Para evitar este posible error, ahora que tenemos el archivo .config debemos abrirlo, para ello aplastamos Ctrl + H para ver los archivos ocultos y lo abrirmos con algún editor de texto:
+
+![](vx_images/20240125-123642-abriendo-el-archivo-.config.png)
+
+allí debemos buscar:
+
+CONFIG_SYSTEM_TRUSTED_KEYS
+
+![](vx_images/20240125-123938-buscando-CONFIG_SYSTEM_TRUSTED_KEYS.png)
+
+y borrar todo lo que está entre parentesis, es decir cambiar, de:
+
+CONFIG_SYSTEM_TRUSTED_KEYS="debian/certs/debian-uefi-certs.pem"
+
+a:
+
+CONFIG_SYSTEM_TRUSTED_KEYS=""
+
+Guardar y cerrar
+
+En la siguiente imagen es como me queda:
+
+![](vx_images/20240125-124702-archivo-.config-corregido.png)
+
+Con esto evitamos que en un momento de la compilación nos salga como en la siguiente pantalla:
+
+![](vx_images/20240125-124216-error-debian-certs-debian-uefi-certs.pem.png)
+
+
+
+### El archivo **.config** como respaldo de nuestra configuración para usarlo en otra compilación
 
 Si todos los cambios que usted haya hecho en el Kernel fueran demasiados, en el archivo .config se pueden guardar y cargarlos en otro Kernel que usted vaya a compilar. Eso se hace en la opción Load.
 
@@ -356,7 +388,7 @@ Y de Esc varias veces hasta que salga y quede en la terminal negra:
 
 ![](vx_images/20240124-224244-saliendo-hasta-la-terminal-negra.png)
 
-## ELEGIR LA VELOCIDAD DE COMPILACIÓN (opcional)
+### Elegir la velocidad de compilación (opcional)
 
 Este paso es opcional, podemos exportar el nivel de concurrencia para la compilación *(Concurrencia es la acción de concurrir distintos  sucesos o cosas en un mismo lugar o tiempo)*, para esto existen las siguientes opciones dependiendo de la cantidad de procesadores que usted tenga, para esto hay una regla la de agregar el número uno al número de núcleos que tenga su procesador, ejemplo:
 
@@ -368,7 +400,7 @@ export CONCURRENCY_LEVEL=3
 Si usted tenga 4 núcleos debe poner
 export CONCURRENCY_LEVEL=5
 
- 
+
 
 Así, mi laptop es una Dell Inspiron 1750 y tiene dos núcleos así que yo debo de poner así:
 
