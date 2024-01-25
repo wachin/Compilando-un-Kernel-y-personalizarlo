@@ -482,22 +482,25 @@ salir
 **BASADO EN:**  
 
 **Building realtime Linux for ROS 2 [community-contributed] — ROS 2 Documentation: Foxy documentation**  
-[https://docs.ros.org/en/foxy/Tutorials/Building-Realtime-rt_preempt-kernel-for-ROS-2.html](https://docs.ros.org/en/foxy/Tutorials/Building-Realtime-rt_preempt-kernel-for-ROS-2.html)
+[https://docs.ros.org/en/foxy/Tutorials/Building-Realtime-rt_preempt-kernel-for-ROS-2.html ](https://docs.ros.org/en/foxy/Tutorials/Building-Realtime-rt_preempt-kernel-for-ROS-2.html) 
 
 **System configuration [Linux-Sound] ** 
-[https://wiki.linuxaudio.org/wiki/system_configuration#do_i_really_need_a_real-time_kernel](https://wiki.linuxaudio.org/wiki/system_configuration#do_i_really_need_a_real-time_kernel)
+[https://wiki.linuxaudio.org/wiki/system_configuration#do_i_really_need_a_real-time_kernel](https://wiki.linuxaudio.org/wiki/system_configuration#do_i_really_need_a_real-time_kernel)  
 
 **Real-Time Linux | Toradex Developer Center ** 
-[https://developer.toradex.com/linux-bsp/real-time/real-time-linux/#preempt-rt-patch-set](https://developer.toradex.com/linux-bsp/real-time/real-time-linux/#preempt-rt-patch-set)
+[https://developer.toradex.com/linux-bsp/real-time/real-time-linux/#preempt-rt-patch-set](https://developer.toradex.com/linux-bsp/real-time/real-time-linux/#preempt-rt-patch-set)  
 
 **Guide for Debian Maintainers**  
-[https://www.debian.org/doc/manuals/debmake-doc/index.en.html](https://draft.blogger.com/#)
+[https://www.debian.org/doc/manuals/debmake-doc/index.en.html ](https://draft.blogger.com/#) 
 **Chapter 3. Tool Setups**  
-[https://www.debian.org/doc/manuals/debmake-doc/ch03.en.html#email-setup](https://draft.blogger.com/#)
+[https://www.debian.org/doc/manuals/debmake-doc/ch03.en.html#email-setup  ](https://draft.blogger.com/#)
 
 **The Linux Kernel: The Source Code**  
+https://www.linux.org/threads/the-linux-kernel-the-source-code.8679/  
 
-https://www.linux.org/threads/the-linux-kernel-the-source-code.8679/
+**Compiling the kernel 5.11.11**  
+https://askubuntu.com/questions/1329538/compiling-the-kernel-5-11-11  
+https://askubuntu.com/a/1329625  
 
 
 
