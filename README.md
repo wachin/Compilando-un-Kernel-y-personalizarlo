@@ -150,7 +150,9 @@ Entrar en la carpeta del Kernel y abrir una terminal allí:
 
 y poner allí en la terminal:
 
-`make menuconfig`
+```
+make menuconfig
+```
 
 ![](vx_images/20240124-123559-abrir-terminal-alli-en-el-kernel.png)
 
@@ -158,9 +160,31 @@ y al dar ENTER aparecerá la configuración del Kernel:
 
 ![](vx_images/20240124-123841-kernel-configuration.png)
 
+### Las opciones de ayuda
+
+Allí dice:
+
+Arrow keys navigate the menu.  <Enter> selects submenus ---> (or empty │  
+  │  submenus ----).  Highlighted letters are hotkeys.  Pressing <Y>        │  
+  │  includes, <N> excludes, <M> modularizes features.  Press <Esc><Esc> to exit│  
+  │  <?> for Help, </> for Search.  Legend: [*] built-in  [ ] 
+
+que traducido es:
+
+Las teclas de flecha navegan por el menú. <Entrar> selecciona submenús ---> (o vacío │
+   │ submenús ----). Las letras resaltadas son teclas de acceso rápido. Presionando <Y> │
+   │ incluye, <N> excluye, <M> modulariza funciones. Presione <Esc><Esc> para salir│
+   │ <?> para Ayuda, </> para Buscar. Leyenda: [*] incorporado [ ]
+
+Es decir ejemplo que si presiono:
+
+/
+
+aparecerá un menú para buscar, y con doble Esc regreso atrás
+
 ## VERIFICANDO SOPORTE EXFAT (OPCIONAL)
 
-Yo utilizo particiones exFAT y si este Kernel no tiene soporte tendría que instalarselo, para verificar si tiene entro en la carpeta:
+Yo utilizo una particion exFAT para allí poner archivos que puedo consultar desde Linux y Windows pues tengo Dual Bool y si este Kernel no tiene soporte tendría que instalarselo, para verificar si tiene entro en la carpeta:
 
 fs
 
@@ -190,6 +214,98 @@ y este Kernel si tiene:
 
 ahora retrocedo con Esc dos veces hasta llegar al inicio.
 
+## Qué puedo desabilitar en el Kernel?
+
+Según el siguiente tutorial:
+
+https://berkinakkaya.medium.com/compiling-installing-a-custom-linux-kernel-195770f657be
+
+tomaré cosas que pienso que podré desabilitar:
+
+![](vx_images/20240124-213827_berkinakkaya.medium.com_compiling-installing-a-custom-linux-kernel.png)
+
+![](vx_images/20240124-213828_berkinakkaya.medium.com_compiling-installing-a-custom-linux-kernel_p2.png)
+
+La compresión del Kernel
+
+Según:
+
+**Kernel configuration**
+
+https://wiki.postmarketos.org/wiki/Kernel_configuration
+
+![](vx_images/20240124-213829_General-Setup_Kernel-compression-mode-lzo.png)
+
+donde la traducción sería:
+
+**GZIP**
+     La vieja y probada compresión gzip. Proporciona un buen equilibrio entre la relación de compresión y la velocidad de descompresión.
+
+**XZ**
+     XZ utiliza el algoritmo LZMA2 y filtros BCJ específicos del conjunto de instrucciones que pueden mejorar la relación de compresión del código ejecutable. El tamaño del kernel es aproximadamente un 30% más pequeño con XZ en comparación con gzip. La velocidad es aproximadamente la misma que con LZMA: la velocidad de descompresión de XZ es mejor que la de bzip2 pero peor que la de gzip y LZO. La compresión es lenta.
+
+**LZO**
+     Su relación de compresión es la más pobre entre las opciones. El tamaño del kernel es aproximadamente un 10% mayor que el de gzip; sin embargo su velocidad (tanto de compresión como descompresión) es la más rápida.
+
+**LZMA**
+     La relación de este algoritmo de compresión es la mejor. La velocidad de descompresión está entre gzip y bzip2. La compresión es más lenta. El tamaño del kernel es aproximadamente un 33% más pequeño con LZMA en comparación con gzip.
+
+Para llegar allí:
+
+**General setup --->**
+
+![](vx_images/20240124-220305-Enter-en-general-Setup.png)
+
+luego:
+
+**Kernel compression mode (XZ)  --->**
+
+![](vx_images/20240124-220438-Kernel-compression-mode-(XZ)--->.png)
+
+y se ve por defecto:
+
+XZ
+
+![](vx_images/20240124-220620-por-defecto-XZ.png)
+
+elijo:
+
+**LZO**
+
+![](vx_images/20240124-220739-elijo-LZO.png)
+
+y lo veo ya activado:
+
+![](vx_images/20240124-220848-lo-veo-a-LZO-activado.png)
+
+doy Esc dos veces más para llegar el inicio
+
+### Desabilitando el Soporte para invitados de Linux
+
+Yo no voy a usar este Sistema Operativo dentro de una máquina virtual así que lo voy a desabilitar:
+
+![](vx_images/20240124-221235-Processor-type-and-features--->.png)
+
+entro allí:
+
+![](vx_images/20240124-221404-desactivo-Linux-Guest-Support.png)
+
+listo:
+
+![](vx_images/20240124-221405-Linux-Guest-Support-desabilitado.png)
+
+Doy Esc dos veces para ir al menú anterior.
+
+### Desabilito Google Firmware Drivers
+
+Como yo no uso eso lo voy a desabilitar:
+
+![](vx_images/20240124-221824-Firmware-Drivers--->.png)
+
+pero ya está desabilitado:
+
+![](vx_images/20240124-221919-Google-Firmware-Drivers--->.png)
+
 ### Desactivando la virtualización 
 
 Me pongo encima de:
@@ -202,27 +318,49 @@ y aplasto la barra espaiadora para desactibarlo:
 
 ![](vx_images/20240124-133827-desabling-Virtualization.png)
 
-Bien
+Bien, también desabilito:
 
-y dar Enter, y cuando dice Ok dar Enter otra vez
+```
+---Networking Support / Amateur Radio Support
+```
 
-![](vx_images/191212 dar enter en ok.png)
+### Desabilitar todo en Kernel hacking
 
-Ahora con Tab o flecha derecha llegar hasta Exit y dar Enter:
+como allí dice que es seguro desactivar todo lo que hay allí, pues a todo lo que tiene asterisco lo desactivo con la barra espaciadora:
 
-![](vx_images/191320 llegar hasta exit y dar enter.png)
+![](vx_images/20240124-222903-en-kernel-hacking-desabilito-todo-lo-que-tiene-asterisco.png)
 
-y enter en la nueva configuración:
+entré en todos los sub menú y desabilité todo lo que pude.
 
-![](vx_images/191430 enter en la nueva configuracion.png)
+### Guardando (Save)
 
+Con la flecha derecha de su teclado llegue hasta Save:
 
+![](vx_images/20240124-223706-con-la-flecha-a-la-derecha-llegue-hasta-Save.png)
 
-## ELEGIR LA VELOCIDAD DE COMPILACIÓN
+y de Enter:
+
+![](vx_images/20240124-223827-en-.config-de-enter-otra-vez.png)
+
+y dice que la configuración ha sido guardada a .config:
+
+![](vx_images/20240124-223929-dice-que-la-configuracion-ha-sido-guardada-a-.config.png)
+
+El archivo **.config**
+
+Si todos los cambios que usted haya hecho en el Kernel fueran demasiados, en el archivo .config se pueden guardar y cargarlos en otro Kernel que usted vaya a compilar. Eso se hace en la opción Load.
+
+de Enter otra vez
+
+Y de Esc varias veces hasta que salga y quede en la terminal negra:
+
+![](vx_images/20240124-224244-saliendo-hasta-la-terminal-negra.png)
+
+## ELEGIR LA VELOCIDAD DE COMPILACIÓN (opcional)
 
 Este paso es opcional, podemos exportar el nivel de concurrencia para la compilación *(Concurrencia es la acción de concurrir distintos  sucesos o cosas en un mismo lugar o tiempo)*, para esto existen las siguientes opciones dependiendo de la cantidad de procesadores que usted tenga, para esto hay una regla la de agregar el número uno al número de núcleos que tenga su procesador, ejemplo:
 
- 
+
 
 Si usted tenga 2 núcleos debe poner
 export CONCURRENCY_LEVEL=3
@@ -242,19 +380,25 @@ esto es para que la compilación no se demore mucho
 
  
 
-#### Compinado el Kernel etiquetandolo  
+#### Compinado el Kernel etiquetandolo con mi Nick Name
 
-Es  posible Compilar el Kernel y ponerle una etiqueta como descripción, en el siguiente ejemplo en LOCALVERSION= está la etiqueta  wachin:
+Es  posible Compilar el Kernel y ponerle una etiqueta como descripción, en el siguiente ejemplo en LOCALVERSION= está la etiqueta  **wachin**:
 
 ```
 make deb-pkg LOCALVERSION=-wachin KDEB_PKGVERSION=$(make kernelversion)-1
 ```
 
-si se pone eso en la terminal con esa etiqueta será compilado el Kernel y eso aparecerá al final del nombre del deb
+así como en la siguiente imagen:
 
-ahora pongo una imagen de lo que sale al poner el comando:
+![](vx_images/20240124-224443-comando-para-compilar-el-kernel.png)
 
-[![vx_images](https://blogger.googleusercontent.com/vx_images/a/AVvXsEhkv1-n-y3iXMzV7Lit9H4qcHStDQGqL_ytfSOcIJ3fhuLiRSjKj18C7VRPRi5gqKRz1nH4zP6kZAN6PlI-g1fC6U9RYZjbER9wbQ0blHDGlXDvtpTLyK4fj4dMkZuBtEvQj4gbS4O5sYnVvsEX8RcYXcfXfuj5VTJvwtU2uwb9oljyCjFsm2pH1XbU=s16000)](https://draft.blogger.com/#)
+y dar Enter
+
+![](vx_images/20240124-224611-compilando-el-kernel.png)
+
+así, será compilado el Kernel y la etiqueta que ustedes hayan puesto aparecerá al final del nombre del deb
+
+
 
 hay que esperar un buen rato hasta que termine la compilación, pueden ser horas
 
