@@ -55,7 +55,7 @@ entonces sé que si instalo una versión como esa debería de funcionar, o sea e
 Debemos instalar las siguientes dependencias para poder compilarlo:
 
 ```
-sudo apt-get install gcc build-essential libncurses5-dev fakeroot wget xz-utils flex bison libssl-dev autoconf automake cmake
+sudo apt-get install gcc build-essential libncurses5-dev fakeroot wget xz-utils flex bison libssl-dev autoconf automake cmake dwarves openssl libelf-dev libudev-dev libpci-dev libiberty-dev bc python3-sphinx lzop lzma lzma-dev libmpc-dev u-boot-tools gettext
 ```
 
 **Nota:** Es posible que con el paso del tiempo se necesite alguna otra dependencia lo cual deberán de consultando con la información de error que les dé mientras lo compilan.
@@ -515,6 +515,26 @@ https://stackoverflow.com/questions/61657707/btf-tmp-vmlinux-btf-pahole-pahole-i
 https://stackoverflow.com/a/61758176  
 
 ![](vx_images/20240126-014814-tmp_vmlinux.btf_pahole-(pahole)-is-not-available-Failed-to-generate-BTF-for-vmlinux.png)
+
+para evitar ese error instalar dwarves:
+
+```sh
+sudo apt install dwarves
+```
+
+**Building and compiling Linux Kernel**  
+https://dev.to/rahulku48837211/building-and-compiling-linux-kernel-2elc  
+
+**Error while building CM - lzop: not found - SOLVED + how to fix**  
+https://xdaforums.com/t/error-while-building-cm-lzop-not-found-solved-how-to-fix.2465760/  
+
+**EBC Exercise 08 Installing Development Tools 4.4**  
+https://elinux.org/EBC_Exercise_08_Installing_Development_Tools_4.4  
+
+**Minimal requirements to compile the Kernel**  
+https://www.kernel.org/doc/html/next/process/changes.html
+
+
 
 
 
