@@ -390,7 +390,15 @@ Y de Esc varias veces hasta que salga y quede en la terminal negra:
 
 ### Elegir la velocidad de compilación (opcional)
 
-Este paso es opcional, podemos exportar el nivel de concurrencia para la compilación *(Concurrencia es la acción de concurrir distintos  sucesos o cosas en un mismo lugar o tiempo)*, para esto existen las siguientes opciones dependiendo de la cantidad de procesadores que usted tenga, para esto hay una regla la de agregar el número uno al número de núcleos que tenga su procesador, ejemplo:
+Este paso es opcional, podemos exportar el nivel de concurrencia para la compilación *(Concurrencia es la acción de concurrir distintos  sucesos o cosas en un mismo lugar o tiempo)*, para esto existen las siguientes opciones dependiendo de la cantidad de procesadores que usted tenga, para esto hay una regla la de agregar el número uno al número de núcleos que tenga su procesador
+
+Para saber cuántos procesadores tiene ponga en una terminal:
+
+```
+nproc --all
+```
+
+ y ejemplo:
 
 
 
@@ -501,6 +509,12 @@ https://www.linux.org/threads/the-linux-kernel-the-source-code.8679/
 **Compiling the kernel 5.11.11**  
 https://askubuntu.com/questions/1329538/compiling-the-kernel-5-11-11  
 https://askubuntu.com/a/1329625  
+
+**BTF: .tmp_vmlinux.btf: pahole (pahole) is not available Failed to generate BTF for vmlinux**  
+https://stackoverflow.com/questions/61657707/btf-tmp-vmlinux-btf-pahole-pahole-is-not-available  
+https://stackoverflow.com/a/61758176  
+
+![](vx_images/20240126-014814-tmp_vmlinux.btf_pahole-(pahole)-is-not-available-Failed-to-generate-BTF-for-vmlinux.png)
 
 
 
