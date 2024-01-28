@@ -534,7 +534,16 @@ https://elinux.org/EBC_Exercise_08_Installing_Development_Tools_4.4
 **Minimal requirements to compile the Kernel**  
 https://www.kernel.org/doc/html/next/process/changes.html
 
+**How to Compile a Linux Kernel**  
+https://www.linux.com/topic/desktop/how-compile-linux-kernel-0/  
 
+Configuring the kernel
+
+Before we actually compile the kernel, we must first configure which modules to include. There is actually a really easy way to do this. With a single command, you can copy the current kernel’s config file and then use the tried and true menuconfig command to make any necessary changes. To do this, issue the command:
+
+cp /boot/config-$(uname -r) .config
+
+Now that you have a configuration file, issue the command make menuconfig. This command will open up a configuration tool (Figure 1) that allows you to go through every module available and enable or disable what you need or don’t need.
 
 
 
