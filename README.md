@@ -1,16 +1,16 @@
 # Compilando un Kernel y personalizarlo en Linux
 
-**TUTORIAL EN CONSTRUCCIÓN**
-
-
-
-
-
 ### Porqué compilar un Kernel para personalizarlo?
 
 Deseo compilar un Kernel y personalizarlo porque tengo un ordenador de pocos recursos y voy a compilar el Kernel desabilitando la Virtualización y otros para alijerar el Kernel
 
 Este tutorial lo estoy haciendo en MX Linux 21, pero lo puede usar en cualquier Linux basado en Debian, y podría adaptarlo para Ubuntu u otro Linux.
+
+## Requisitos
+
+- 40 GB de espacio de Disco
+- 4 GB de memoria RAM como mínimo sería lo ideal, pero si tiene 3 GB lo puede compilar pero debe dejar cerradas las demás aplicaciones para evitar que le aparezca algún error desconocido.
+- Debe hacer las cosas con cuidado cuando quiera configurar el Kernel, anote todo lo que hace, si aplasta flecha arriba, abajo, barra espaciadora, etc, vea bien todo lo que aplasta, anote lo que hace.
 
 ### Añadir el nombre del Mantenedor o Responsable a su Sistema para que se compile con ese nombre (Opcional)
 
